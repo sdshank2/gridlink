@@ -10,7 +10,7 @@ const NavBar = () => {
     return (
         <nav className="sticky top-0 bg-white border-gray-200 dark:bg-green-700 z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="/stemscholars/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="/gridlink/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img
                         src="https://flowbite.com/docs/images/logo.svg"
                         className="h-8"
@@ -48,7 +48,7 @@ const NavBar = () => {
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-green-700 md:dark:bg-green-700 dark:border-green-700">
                         <li>
                             <a
-                                href="/stemscholars/"
+                                href="/gridlink/"
                                 className="block py-2 px-3 text-green-700 rounded-sm md:bg-transparent md:hover:text-blue-700 md:dark:hover:text-black md:p-0 dark:text-white transition-all duration-300"
                                 aria-current="page"
                             >
@@ -57,7 +57,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <a
-                                href="/stemscholars/resources"
+                                href="/gridlink/resources"
                                 className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Resources
@@ -65,7 +65,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <a
-                                href="/stemscholars/submitForm"
+                                href="/gridlink/submitForm"
                                 className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Submit a Form
@@ -73,7 +73,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <a
-                                href="/stemscholars/contact"
+                                href="/gridlink/contact"
                                 className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Contact
