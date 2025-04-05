@@ -1,0 +1,7 @@
+@import "tailwindcss";
+.form-bg {
+    @apply bg-gray-200 p-2 border border-gray-300 focus:outline-none focus:bg-gray-300 dark:bg-gray-800 dark:border-gray-900 dark:text-white;
+}
+.form-field{
+    @apply bg-gray-200 ml-2 mr-2 mt-2 mb-2 rounded-3xl text-black text-center;
+}
