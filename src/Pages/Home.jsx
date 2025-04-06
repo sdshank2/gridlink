@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     return (
@@ -18,22 +19,22 @@ export default function Home() {
 
             <div className="p-8">
                 <div className="">
-                    <h2 className="text-7xl font-semibold text-center mb-6 dark:text-white">Welcome to Gridlink.Help</h2>
+                    <h2 className="text-7xl font-semibold text-center mb-6 dark:text-white">Welcome to GridLink.Help</h2>
                     <p className="text-4xl text-center mb-6 dark:text-white">
                         Simplifying the Interconnection Process for Renewable Energy Projects
                     </p>
                     <p className="text-2xl text-center mb-4 dark:text-white">
-                        At Gridlink.Help, we know that connecting a new renewable energy project to the power grid can be a long, complicated, and error-prone process. The interconnection queue—the “line” where projects wait to be reviewed and approved—often takes months to move through. Inaccurate or incomplete paperwork can lead to delays and increased costs, hindering New Jersey’s transition to renewable energy.
+                        At GridLink.Help, we know that connecting a new renewable energy project to the power grid can be a long, complicated, and error-prone process. The interconnection queue—the “line” where projects wait to be reviewed and approved—often takes months to move through. Inaccurate or incomplete paperwork can lead to delays and increased costs, hindering New Jersey’s transition to renewable energy.
                     </p>
                 </div>
                 <div>
                     <h3 className="text-4xl font-semibold text-center mt-8 dark:text-white">What We Do</h3>
                     <p className="text-2xl text-center mb-6 dark:text-white">
-                        Gridlink.Help is an AI-powered platform designed to streamline this entire process. Our intuitive user interface guides consumers, businesses, and contractors step-by-step through filling out the complex interconnection forms. By using real-time error checking and clear, contextual instructions, our solution helps you avoid common mistakes that lead to rejections or delays.
+                        GridLink.Help is an AI-powered platform designed to streamline this entire process. Our intuitive user interface guides consumers, businesses, and contractors step-by-step through filling out the complex interconnection forms. By using real-time error checking and clear, contextual instructions, our solution helps you avoid common mistakes that lead to rejections or delays.
                     </p>
                 </div>
 
-                <h3 className="text-2xl font-semibold text-center mt-8 mb-6 dark:text-white">How Gridlink.Help Works</h3>
+                <h3 className="text-2xl font-semibold text-center mt-8 mb-6 dark:text-white">How GridLink.Help Works</h3>
                 <div className="flex justify-center items-center mt-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                         <motion.div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition duration-100 ease-in-out max-w-md" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -75,9 +76,11 @@ export default function Home() {
 
                 <h3 className="text-2xl font-semibold text-center dark:text-white mt-8">Want to Get Started?</h3>
                 <div className="mt-4 text-center">
+                    <Link to="/submitForm">
                     <motion.button className="bg-blue-600 text-white py-6 px-6 rounded-lg text-xl shadow-md hover:bg-blue-700 transition duration-300" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         Start Your First Interconnection Request
                     </motion.button>
+                    </Link>
                 </div>
             </div>
         </>
