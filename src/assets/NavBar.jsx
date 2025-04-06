@@ -11,12 +11,8 @@ const NavBar = () => {
         <nav className="sticky top-0 bg-white border-gray-200 dark:bg-green-700 z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="/gridlink/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="h-8"
-                        alt="GridLink Logo"
-                    />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:text-black transition-all duration-300">
+                    <img src="gridlink-logo.png" className="w-16 h-16" alt="GridLink Logo"/>
+                    <span className="font-sora self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:text-black transition-all duration-300">
             GridLink.help
           </span>
                 </a>
@@ -49,7 +45,7 @@ const NavBar = () => {
                         <li>
                             <a
                                 href="/gridlink/"
-                                className="block py-2 px-3 text-green-700 rounded-sm md:bg-transparent md:hover:text-blue-700 md:dark:hover:text-black md:p-0 dark:text-white transition-all duration-300"
+                                className="font-sora block py-2 px-3 text-green-700 rounded-sm md:bg-transparent md:hover:text-blue-700 md:dark:hover:text-black md:p-0 dark:text-white transition-all duration-300"
                                 aria-current="page"
                             >
                                 Home
@@ -58,7 +54,7 @@ const NavBar = () => {
                         <li>
                             <a
                                 href="/gridlink/resources"
-                                className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
+                                className="font-sora block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Resources
                             </a>
@@ -66,7 +62,7 @@ const NavBar = () => {
                         <li>
                             <a
                                 href="/gridlink/submitForm"
-                                className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
+                                className="font-sora block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Submit a Form
                             </a>
@@ -74,7 +70,7 @@ const NavBar = () => {
                         <li>
                             <a
                                 href="/gridlink/contact"
-                                className="block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
+                                className="font-sora block py-2 px-3 text-green-700 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all duration-300"
                             >
                                 Contact
                             </a>
