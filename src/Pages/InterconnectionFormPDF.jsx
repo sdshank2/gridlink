@@ -24,7 +24,7 @@ const InterconnectionFormPDF = ({ formData }) => {
           </View>
         ))}
       </Page>
-    </Document >
+    </Document>
   )
 };
 
