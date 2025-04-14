@@ -83,6 +83,7 @@ const ApplicationForm = () => {
     }, [aiInsights])
 
     return (
+        //Fix fields by combining address fields & fixing keys
         <div className="flex h-full overflow-hidden top-0 absolute w-full pt-24">
             <div className="w-1/2 p-8 pb-24 overflow-y-auto">
                 <form onSubmit={handleSubmit}>

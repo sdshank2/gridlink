@@ -51,6 +51,46 @@ export default function Resources() {
                             FirstEnergy Connect - New Jersey
                         </a>
                     </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.iso-ne.com/participate/applications-status-changes/interconnection-process-guide">
+                            ISO-NE Interconnection Process Guide
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.iso-ne.com/system-planning/interconnection-service">
+                            ISO-NE Interconnection Services Overview
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://isonewswire.com/2019/10/03/interconnecting-step-by-step/">
+                            ISO Newswire - Interconnecting Step-by-Step
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.versantpower.com/energy-solutions/clean-energy/distribution-interconnection-process">
+                            Versant Power - Distribution Interconnection Process
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.energynetworks.org/assets/images/Publications/2024/241218new-distribution-queue-entry-requirements-v1.pdf?1739917614">
+                            Distribution Queue Entry Requirements PDF (2024)
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.misoenergy.org/planning/resource-utilization/generator-interconnection/">
+                            MISO Generator Interconnection Guide
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://emp.lbl.gov/queues">
+                            Lawrence Berkeley Lab - Interconnection Queue Trends & Stats
+                        </a>
+                    </p>
+                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.caiso.com/generation-transmission/generation/generator-interconnection">
+                            CAISO Generator Interconnection Guide (California)
+                        </a>
+                    </p>
                 </div>
             </div>
         </>
