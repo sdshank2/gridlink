@@ -1,6 +1,7 @@
 // tailwind.config.js
 // eslint-disable-next-line no-undef
 module.exports = {
+    darkMode: 'class',
     content: [
         "./src/**/*.{js,jsx,ts,tsx}",
     ],
@@ -11,5 +12,6 @@ module.exports = {
             },
         },
     },
-    plugins: [],
-}
+    plugins: [
+        require("tailwind-scrollbar"),
+    ],}

@@ -1,8 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.svg"
+import logoLight from "../assets/logo-light.svg";
+import logoDark from "../assets/logo-dark.svg";
+
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
+        setIsDarkMode(matchDark.matches);
+
+        const handleChange = (e) => {
+            setIsDarkMode(e.matches);
+        };
+
+        matchDark.addEventListener("change", handleChange);
+
+        return () => {
+            matchDark.removeEventListener("change", handleChange);
+        };
+    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -12,7 +30,11 @@ const NavBar = () => {
         <nav className="sticky top-0 bg-white border-gray-200 dark:bg-green-700 z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src={logo} className="w-16 h-16" alt="GridLink Logo" />
+                    <img
+                        src={isDarkMode ? logoDark : logoLight}
+                        className="w-16 h-16"
+                        alt="GridLink Logo"
+                    />
                     <span className="font-sora self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:text-black transition-all duration-300">
                         GridLink.help
                     </span>
@@ -53,6 +75,15 @@ const NavBar = () => {
                                 Home
                             </Link>
                         </li>
+                        <li>
+                        <Link
+                            to="/information"
+                            className="font-sora block py-2 px-3 text-green-700 rounded-sm md:bg-transparent md:hover:text-blue-700 md:dark:hover:text-black md:p-0 dark:text-white transition-all duration-300"
+                            aria-current="page"
+                        >
+                            Information
+                        </Link>
+                    </li>
                         <li>
                             <Link
                                 to="/submitForm"
