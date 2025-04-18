@@ -9,6 +9,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sora: ['Sora', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
             },
         },
     },

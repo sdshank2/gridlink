@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
 
+const cardClass = "bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-6 min-h-[400px] flex flex-col hover:shadow-xl transition-shadow duration-300";
+const headerClass = "text-lg font-bold mb-2 text-gray-800 dark:text-white text-center";
+const infoClass = "text-gray-600 dark:text-gray-300 text-center flex-col space-y-6 text-base";
+
 export default function Information() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    return(
+    return (
         <>
-            <div className="relative h-[432px] bg-[url('https://wp.technologyreview.com/wp-content/uploads/2025/02/250218-powergrid.jpg?resize=1200,600')] bg-cover bg-center flex items-center justify-center bg-fixed">
+            <div className="relative h-[432px] bg-[url('https://images.unsplash.com/photo-1620415629284-975004d37752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center flex items-center justify-center">
                 <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
                 <motion.h1
                     className="text-white font-semibold text-3xl sm:text-3xl md:text-4xl max-w-full z-10 relative"
@@ -20,79 +24,123 @@ export default function Information() {
                 </motion.h1>
             </div>
 
-            <div className="py-8 px-4 sm:px-8 md:px-12">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Useful Resources:</h2>
-                <div className="space-y-4">
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.firstenergycorp.com/content/dam/feconnect/files/retail/Customer-Interconnection-Guide-Single-Phase.pdf">
-                            Interconnection Queue Term Guide with Explanation
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://nj.pseg.com/saveenergyandmoney/solarandrenewableenergy/applicationprocess">
-                            Building & Connecting Your Home Solar System - PSE&G
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.interconnection.fyi/?state=NJ">
-                            https://www.interconnection.fyi/?state=NJ
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.energy.gov/eere/i2x/articles/tackling-high-costs-and-long-delays-clean-energy-interconnection">
-                            Tackling High Costs and Long Delays in Clean Energy Interconnection
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.bv.com/projects/partnering-tesla-construct-largest-contiguous-electric-vehicle-charging-system-world/">
-                            Partnering with Tesla to Construct the Largest Electric Vehicle Charging System
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.firstenergycorp.com/feconnect/newjersey.html">
-                            FirstEnergy Connect - New Jersey
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.iso-ne.com/participate/applications-status-changes/interconnection-process-guide">
-                            ISO-NE Interconnection Process Guide
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.iso-ne.com/system-planning/interconnection-service">
-                            ISO-NE Interconnection Services Overview
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://isonewswire.com/2019/10/03/interconnecting-step-by-step/">
-                            ISO Newswire - Interconnecting Step-by-Step
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.versantpower.com/energy-solutions/clean-energy/distribution-interconnection-process">
-                            Versant Power - Distribution Interconnection Process
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.energynetworks.org/assets/images/Publications/2024/241218new-distribution-queue-entry-requirements-v1.pdf?1739917614">
-                            Distribution Queue Entry Requirements PDF (2024)
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.misoenergy.org/planning/resource-utilization/generator-interconnection/">
-                            MISO Generator Interconnection Guide
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://emp.lbl.gov/queues">
-                            Lawrence Berkeley Lab - Interconnection Queue Trends & Stats
-                        </a>
-                    </p>
-                    <p className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <a className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300" href="https://www.caiso.com/generation-transmission/generation/generator-interconnection">
-                            CAISO Generator Interconnection Guide (California)
-                        </a>
-                    </p>
+            <div className="p-10 bg-gray-100 dark:bg-gray-900">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <motion.div
+                        className={cardClass}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <h2 className={headerClass}>Important Considerations</h2>
+                        <div className={infoClass}>
+                            <div>
+                                <strong>Detailed Application:</strong><br />
+                                <span>Prepare a comprehensive application with all required information, including project details, location, technical specifications, and contact information.</span>
+                            </div>
+                            <div>
+                                <strong>Deposit and Milestone Payments:</strong><br />
+                                <span>Be aware of required deposits or milestone payments (e.g., M2 in some regions).</span>
+                            </div>
+                            <div>
+                                <strong>Site Control:</strong><br />
+                                <span>Demonstrate that necessary permits and approvals for the project location have been secured.</span>
+                            </div>
+                            <div>
+                                <strong>Documentation:</strong><br />
+                                <span>Gather all necessary documentation (e.g., property documents, permits, etc.).</span>
+                            </div>
+                            <div>
+                                <strong>Online Portal (if applicable):</strong><br />
+                                <span>Many utilities/operators have online portals for application submissions.</span>
+                            </div>
+                            <div>
+                                <strong>Contact Utility/Grid Operator:</strong><br />
+                                <span>Contact the relevant utility or grid operator to clarify specific requirements.</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        className={cardClass}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <h2 className={headerClass}>Key Steps in the Interconnection Process</h2>
+                        <div className={infoClass}>
+                            <div>
+                                <strong>Pre-Application:</strong><br />
+                                <span>Determine project siting, design, and estimated costs using available tools like hosting capacity maps.</span>
+                            </div>
+                            <div>
+                                <strong>Application Submission:</strong><br />
+                                <span>Submit your application to the electric utility.</span>
+                            </div>
+                            <div>
+                                <strong>Queue Placement:</strong><br />
+                                <span>Your application is placed in the interconnection queue.</span>
+                            </div>
+                            <div>
+                                <strong>Evaluation and Studies:</strong><br />
+                                <span>The utility will review your application and perform studies to assess grid impacts.</span>
+                            </div>
+                            <div>
+                                <strong>Interconnection Agreement:</strong><br />
+                                <span>Once studies are complete, you'll enter into an interconnection agreement with the utility.</span>
+                            </div>
+                            <div>
+                                <strong>Construction and Grid Updates:</strong><br />
+                                <span>You'll construct your project, and the utility will make necessary grid upgrades.</span>
+                            </div>
+                            <div>
+                                <strong>Commissioning and Operation:</strong><br />
+                                <span>The utility will perform final checks before the project can begin operating.</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        className={cardClass}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <h2 className={headerClass}>Potential Challenges and Delays</h2>
+                        <div className={infoClass}>
+                            <div>
+                                <strong>Interconnection Queue Backlogs:</strong><br />
+                                <span>Interconnection queues can have significant backlogs, causing delays.</span>
+                            </div>
+                            <div>
+                                <strong>Study Periods:</strong><br />
+                                <span>Interconnection studies can take considerable time.</span>
+                            </div>
+                            <div>
+                                <strong>Grid Infrastructure Limitations:</strong><br />
+                                <span>Capacity limitations on the grid can cause further delays.</span>
+                            </div>
+                            <div>
+                                <strong>Regulatory Requirements and Changes:</strong><br />
+                                <span>Be aware of any regulatory changes that may affect the process.</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        className={cardClass}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <h2 className={headerClass}>Seeking Guidance and Support</h2>
+                        <div className={infoClass}>
+                            <div>
+                                <strong>Regional Grid Operators/Utilities:</strong><br />
+                                <span>Consult with the utility or grid operator in your region for specific information.</span>
+                            </div>
+                            <div>
+                                <strong>Industry Associations and Organizations:</strong><br />
+                                <span>Consult with organizations like the American Clean Power Association (ACP).</span>
+                            </div>
+                            <div>
+                                <strong>Consultants:</strong><br />
+                                <span>Consider engaging with experts who specialize in the interconnection process to help navigate the challenges.</span>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </>
