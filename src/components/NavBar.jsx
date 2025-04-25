@@ -72,7 +72,7 @@ const NavBar = () => {
                             <li key={label}>
                                 <Link
                                     to={path}
-                                    className="font-sora block py-2 px-3 text-gray-900 dark:text-white rounded-sm hover:text-green-700 dark:hover:text-black hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 md:hover:bg-transparent"
+                                    className="font-sora block py-2 px-3 text-gray-900 dark:text-white rounded-sm hover:text-green-700 dark:hover:text-black transition-all duration-300 md:hover:bg-transparent"
                                 >
                                     {label}
                                 </Link>

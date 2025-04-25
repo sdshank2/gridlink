@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
+import { DocumentTextIcon, AdjustmentsHorizontalIcon, ExclamationCircleIcon, PhoneIcon } from '@heroicons/react/24/solid';
 
 const cardClass = "bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-6 min-h-[400px] flex flex-col hover:shadow-xl transition-shadow duration-300";
-const headerClass = "text-lg font-bold mb-2 text-gray-800 dark:text-white text-center";
-const infoClass = "text-gray-600 dark:text-gray-300 text-center flex-col space-y-6 text-base";
+const headerClass = "text-lg font-bold mb-2 text-gray-800 dark:text-white";
+const infoClass = "text-gray-600 dark:text-gray-300 flex-col space-y-6 text-base";
+const subheaderClass = "font-semibold text-green-700 dark:text-green-400";
 
 export default function Information() {
     useEffect(() => {
@@ -23,38 +25,40 @@ export default function Information() {
                     Information
                 </motion.h1>
             </div>
-
             <div className="p-10 bg-gray-100 dark:bg-gray-900">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <motion.div
                         className={cardClass}
                         whileHover={{ scale: 1.02 }}
                     >
-                        <h2 className={headerClass}>Important Considerations</h2>
+                        <div className="flex items-center space-x-3 mb-4">
+                            <DocumentTextIcon className="h-6 w-6 mb-1.5 text-blue-500" />
+                            <h2 className={headerClass}>Important Considerations</h2>
+                        </div>
                         <div className={infoClass}>
                             <div>
-                                <strong>Detailed Application:</strong><br />
-                                <span>Prepare a comprehensive application with all required information, including project details, location, technical specifications, and contact information.</span>
+                                <strong className={subheaderClass}>Detailed Application:</strong>
+                                <p>Prepare a comprehensive application with all required information, including project details, location, technical specifications, and contact information.</p>
                             </div>
                             <div>
-                                <strong>Deposit and Milestone Payments:</strong><br />
-                                <span>Be aware of required deposits or milestone payments (e.g., M2 in some regions).</span>
+                                <strong className={subheaderClass}>Deposit and Milestone Payments:</strong>
+                                <p>Be aware of required deposits or milestone payments (e.g., M2 in some regions).</p>
                             </div>
                             <div>
-                                <strong>Site Control:</strong><br />
-                                <span>Demonstrate that necessary permits and approvals for the project location have been secured.</span>
+                                <strong className={subheaderClass}>Site Control:</strong>
+                                <p>Demonstrate that necessary permits and approvals for the project location have been secured.</p>
                             </div>
                             <div>
-                                <strong>Documentation:</strong><br />
-                                <span>Gather all necessary documentation (e.g., property documents, permits, etc.).</span>
+                                <strong className={subheaderClass}>Documentation:</strong>
+                                <p>Gather all necessary documentation (e.g., property documents, permits, etc.).</p>
                             </div>
                             <div>
-                                <strong>Online Portal (if applicable):</strong><br />
-                                <span>Many utilities/operators have online portals for application submissions.</span>
+                                <strong className={subheaderClass}>Online Portal (if applicable):</strong>
+                                <p>Many utilities/operators have online portals for application submissions.</p>
                             </div>
                             <div>
-                                <strong>Contact Utility/Grid Operator:</strong><br />
-                                <span>Contact the relevant utility or grid operator to clarify specific requirements.</span>
+                                <strong className={subheaderClass}>Contact Utility/Grid Operator:</strong>
+                                <p>Contact the relevant utility or grid operator to clarify specific requirements.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -63,35 +67,38 @@ export default function Information() {
                         className={cardClass}
                         whileHover={{ scale: 1.02 }}
                     >
-                        <h2 className={headerClass}>Key Steps in the Interconnection Process</h2>
+                        <div className="flex items-center space-x-3 mb-4">
+                            <AdjustmentsHorizontalIcon className="h-6 w-6 mb-1.5 text-yellow-500" />
+                            <h2 className={headerClass}>Key Steps in the Interconnection Process</h2>
+                        </div>
                         <div className={infoClass}>
                             <div>
-                                <strong>Pre-Application:</strong><br />
-                                <span>Determine project siting, design, and estimated costs using available tools like hosting capacity maps.</span>
+                                <strong className={subheaderClass}>Pre-Application:</strong>
+                                <p>Determine project siting, design, and estimated costs using available tools like hosting capacity maps.</p>
                             </div>
                             <div>
-                                <strong>Application Submission:</strong><br />
-                                <span>Submit your application to the electric utility.</span>
+                                <strong className={subheaderClass}>Application Submission:</strong>
+                                <p>Submit your application to the electric utility.</p>
                             </div>
                             <div>
-                                <strong>Queue Placement:</strong><br />
-                                <span>Your application is placed in the interconnection queue.</span>
+                                <strong className={subheaderClass}>Queue Placement:</strong>
+                                <p>Your application is placed in the interconnection queue.</p>
                             </div>
                             <div>
-                                <strong>Evaluation and Studies:</strong><br />
-                                <span>The utility will review your application and perform studies to assess grid impacts.</span>
+                                <strong className={subheaderClass}>Evaluation and Studies:</strong>
+                                <p>The utility will review your application and perform studies to assess grid impacts.</p>
                             </div>
                             <div>
-                                <strong>Interconnection Agreement:</strong><br />
-                                <span>Once studies are complete, you'll enter into an interconnection agreement with the utility.</span>
+                                <strong className={subheaderClass}>Interconnection Agreement:</strong>
+                                <p>Once studies are complete, you'll enter into an interconnection agreement with the utility.</p>
                             </div>
                             <div>
-                                <strong>Construction and Grid Updates:</strong><br />
-                                <span>You'll construct your project, and the utility will make necessary grid upgrades.</span>
+                                <strong className={subheaderClass}>Construction and Grid Updates:</strong>
+                                <p>You'll construct your project, and the utility will make necessary grid upgrades.</p>
                             </div>
                             <div>
-                                <strong>Commissioning and Operation:</strong><br />
-                                <span>The utility will perform final checks before the project can begin operating.</span>
+                                <strong className={subheaderClass}>Commissioning and Operation:</strong>
+                                <p>The utility will perform final checks before the project can begin operating.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -100,23 +107,26 @@ export default function Information() {
                         className={cardClass}
                         whileHover={{ scale: 1.02 }}
                     >
-                        <h2 className={headerClass}>Potential Challenges and Delays</h2>
+                        <div className="flex items-center space-x-3 mb-4">
+                            <ExclamationCircleIcon className="h-6 w-6 mb-1.5 text-red-500" />
+                            <h2 className={headerClass}>Potential Challenges and Delays</h2>
+                        </div>
                         <div className={infoClass}>
                             <div>
-                                <strong>Interconnection Queue Backlogs:</strong><br />
-                                <span>Interconnection queues can have significant backlogs, causing delays.</span>
+                                <strong className={subheaderClass}>Interconnection Queue Backlogs:</strong>
+                                <p>Interconnection queues can have significant backlogs, causing delays.</p>
                             </div>
                             <div>
-                                <strong>Study Periods:</strong><br />
-                                <span>Interconnection studies can take considerable time.</span>
+                                <strong className={subheaderClass}>Study Periods:</strong>
+                                <p>Interconnection studies can take considerable time.</p>
                             </div>
                             <div>
-                                <strong>Grid Infrastructure Limitations:</strong><br />
-                                <span>Capacity limitations on the grid can cause further delays.</span>
+                                <strong className={subheaderClass}>Grid Infrastructure Limitations:</strong>
+                                <p>Capacity limitations on the grid can cause further delays.</p>
                             </div>
                             <div>
-                                <strong>Regulatory Requirements and Changes:</strong><br />
-                                <span>Be aware of any regulatory changes that may affect the process.</span>
+                                <strong className={subheaderClass}>Regulatory Requirements and Changes:</strong>
+                                <p>Be aware of any regulatory changes that may affect the process.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -125,19 +135,22 @@ export default function Information() {
                         className={cardClass}
                         whileHover={{ scale: 1.02 }}
                     >
-                        <h2 className={headerClass}>Seeking Guidance and Support</h2>
+                        <div className="flex items-center space-x-3 mb-4">
+                            <PhoneIcon className="h-6 w-6 mb-1.5 text-green-500" />
+                            <h2 className={headerClass}>Seeking Guidance and Support</h2>
+                        </div>
                         <div className={infoClass}>
                             <div>
-                                <strong>Regional Grid Operators/Utilities:</strong><br />
-                                <span>Consult with the utility or grid operator in your region for specific information.</span>
+                                <strong className={subheaderClass}>Regional Grid Operators/Utilities:</strong>
+                                <p>Consult with the utility or grid operator in your region for specific information.</p>
                             </div>
                             <div>
-                                <strong>Industry Associations and Organizations:</strong><br />
-                                <span>Consult with organizations like the American Clean Power Association (ACP).</span>
+                                <strong className={subheaderClass}>Industry Associations and Organizations:</strong>
+                                <p>Consult with organizations like the American Clean Power Association (ACP).</p>
                             </div>
                             <div>
-                                <strong>Consultants:</strong><br />
-                                <span>Consider engaging with experts who specialize in the interconnection process to help navigate the challenges.</span>
+                                <strong className={subheaderClass}>Consultants:</strong>
+                                <p>Consider engaging with experts who specialize in the interconnection process to help navigate the challenges.</p>
                             </div>
                         </div>
                     </motion.div>

@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
+import { AcademicCapIcon, DocumentTextIcon, MapIcon, CogIcon } from '@heroicons/react/24/solid';
 
+// REWRITE THIS PAGE INTO A SOURCES PAGE
 const cardClass = "p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition";
-const headerClass = "text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100";
+const headerClass = "text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 flex items-center space-x-2";
 const descClass = "text-gray-700 dark:text-gray-300 mb-2";
+const linkClass = "text-blue-600 dark:text-blue-400 hover:text-blue-800 visited:text-purple-700 transition-all duration-300";
 
 const resources = [
     {
         title: "Interconnection Guides",
+        icon: <DocumentTextIcon className="w-6 h-6 text-blue-500" />,
         desc: "A collection of useful guides for different regions and organizations.",
         links: [
             {
@@ -30,6 +34,7 @@ const resources = [
     },
     {
         title: "Utility-Specific Resources",
+        icon: <MapIcon className="w-6 h-6 text-green-500" />,
         desc: "These resources are tailored to different utility companies, providing guidelines and support for joining the interconnection queue.",
         links: [
             {
@@ -48,6 +53,7 @@ const resources = [
     },
     {
         title: "Clean Energy & Research",
+        icon: <AcademicCapIcon className="w-6 h-6 text-yellow-500" />,
         desc: "Learn more about the trends, costs, and research in clean energy and its impact on the interconnection queue.",
         links: [
             {
@@ -62,6 +68,7 @@ const resources = [
     },
     {
         title: "Other Useful Resources",
+        icon: <CogIcon className="w-6 h-6 text-purple-500" />,
         desc: "Additional resources that might help with the interconnection queue and other related topics.",
         links: [
             {
@@ -103,22 +110,25 @@ export default function Resources() {
                 </motion.h1>
             </div>
 
-            <div className="py-12 px-4 sm:px-8 md:px-12 bg-gray-100 dark:bg-gray-900">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div className="py-16 px-6 sm:px-8 md:px-12 bg-gray-100 dark:bg-gray-900">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {resources.map((section, index) => (
                         <motion.div
                             key={index}
                             className={cardClass}
                             whileHover={{ scale: 1.02 }}
                         >
-                            <h4 className={headerClass}>{section.title}</h4>
+                            <h4 className={headerClass}>
+                                {section.icon}
+                                <span>{section.title}</span>
+                            </h4>
                             <p className={descClass}>{section.desc}</p>
-                            <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700 dark:text-gray-300">
+                            <ul className="list-disc list-inside pl-6 space-y-4 text-gray-700 dark:text-gray-300">
                                 {section.links.map((link, i) => (
-                                    <li key={i} className="text-white dark:text-white">
+                                    <li key={i} className="text-lg">
                                         <a
                                             href={link.url}
-                                            className="text-blue-500 hover:text-blue-700 visited:text-purple-600 transition-all duration-300"
+                                            className={linkClass}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >

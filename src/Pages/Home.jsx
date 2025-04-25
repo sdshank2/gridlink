@@ -60,7 +60,7 @@ export default function Home() {
                         Simplifying the Interconnection Process for Renewable Energy
                         Projects
                     </p>
-                    <p className="text-lg md:text-xl mb-10 text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                         At GridLink.help, we know that connecting a new renewable energy
                         project to the power grid can be a long, complicated, and
                         error-prone process. The interconnection queue—the “line” where
@@ -72,7 +72,7 @@ export default function Home() {
                 </div>
 
                 <div className="max-w-6xl mx-auto">
-                    <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8">
+                    <h3 className="text-3xl md:text-4xl font-semibold text-center mb-6">
                         What We Do
                     </h3>
                     <p className="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
@@ -150,7 +150,7 @@ export default function Home() {
                     </h3>
                     <Link to="/submitForm">
                         <motion.button
-                            className="bg-green-700 text-white py-4 px-6 rounded-lg text-lg shadow-md hover:bg-green-800 transition"
+                            className="bg-green-500 dark:bg-green-700 text-white py-4 px-6 rounded-lg text-lg shadow-md hover:bg-green-600 dark:hover:bg-green-800 transition"
                             whileHover={{ scale: 1.05 }}
                         >
                             Start an Interconnection Queue Request
