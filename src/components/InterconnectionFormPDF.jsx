@@ -1,6 +1,9 @@
 import React from "react";
 import { Font, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { PDFDocument } from 'pdf-lib';
+
 //Copy this pdf: https://www.firstenergycorp.com/content/dam/feconnect/files/retail/nj/NJ-Level-1-Interconnection-Application-Agreement.pdf
+
 
 Font.register({
     family: 'Arial',
@@ -8,93 +11,181 @@ Font.register({
 });
 
 const styles = StyleSheet.create({
-  page: { padding: 30 },
-  section: { marginBottom: 10 },
-  title: { fontSize: 15, fontWeight: "bold", marginTop: 10, textAlign: 'center' },
-  subtitle: { fontSize: 12, fontWeight: "bold", textAlign: 'center' },
-  subtitle2: { fontSize: 10.5, fontWeight: "bold", textAlign: 'center' },
-  subheading1: { fontSize: 10.5, fontStyle: "italic", marginTop: 5, textAlign: 'center' },
-  section1: { fontSize: 10.5, fontWeight: "bold", textDecoration: "underline", marginTop: 5, textAlign: 'left', marginBottom: 5},
-  section1_1: { fontSize: 10.5, fontWeight: "normal", textDecoration: "underline", marginTop: 5, textAlign: 'left' },
-  fieldLabel: { fontSize: 12, fontWeight: "normal" },
-  fieldValue: { fontSize: 12, textDecoration: "underline" },
+    page: { padding: 30 },
+    section: { marginBottom: 10 },
+    title: { fontSize: 15, fontWeight: "bold", marginTop: 10, textAlign: 'center' },
+    subtitle: { fontSize: 12, fontWeight: "bold", textAlign: 'center' },
+    subtitle2: { fontSize: 10.5, fontWeight: "bold", textAlign: 'center' },
+    subheading1: { fontSize: 10.5, fontStyle: "italic", marginTop: 5, textAlign: 'center' },
+    section1: { fontSize: 10.5, fontWeight: "bold", textDecoration: "underline", marginTop: 5, textAlign: 'left', marginBottom: 5 },
+    section1_1: { fontSize: 10.5, fontWeight: "normal", textDecoration: "underline", marginTop: 5, textAlign: 'left' },
+    fieldLabel: { fontSize: 12, fontWeight: "normal" },
+    fieldValue: { fontSize: 12, textDecoration: "underline" },
 });
 
-const InterconnectionFormPDF = ({ formData }) => {
-  return (
-    <Document>
-      <Page size="letter" style={styles.page}>
-          <Text style={styles.title}>JCP&L INTERCONNECTION APPLICATION/AGREEMENT - PART 1</Text>
-          <Text style={styles.subtitle}>With Terms and Conditions for Interconnection</Text>
-          <Text style={styles.subtitle}>For a Level 1 Review (Certified Inverter-based Units of 10kW and under)</Text>
-          <Text style={styles.subheading1}>(Application & Conditional Agreement – to be filled out prior to installation) *Indicates required field</Text>
-          <Text style={styles.section1}>
-              Legal Name and Mailing Address of Customer-Generator:{" "}
-              <Text style={{ fontWeight: "normal"}}>
-                  (if an Individual, Individual’s Name)
-              </Text>
-          </Text>
+const formFields = [
+    "New",
+    "Revision to Open App",
+    "Addition to Existing Generation",
+    "Community Solar",
+    "Name",
+    "Mailing Address",
+    "City",
+    "State",
+    "Zip Code",
+    "Contact Person If other than above",
+    "Mailing Address If other than above",
+    "Telephone Daytime",
+    "Email Address",
+    "Name_2",
+    "Mailing Address_2",
+    "City_2",
+    "State_2",
+    "Zip Code_2",
+    "Telephone Daytime_2",
+    "Email Address_2",
+    "New_2",
+    "Revision to Open App_2",
+    "Incremental Addition to Existing Generation",
+    "Facility Address",
+    "City_3",
+    "State_3",
+    "Zip Code_3",
+    "Nearest Crossing Street",
+    "Account",
+    "Meter",
+    "Service Voltage 1",
+    "Service Voltage 2",
+    "VAC Service Rating",
+    "Current Annual Consumption",
+    "kWh  Est Gross Annual Production",
+    "Total DC Source Rating",
+    "Inverter Manufacturer",
+    "Model Number of Inverter",
+    "Number of Phases",
+    "Number of Inverters1",
+    "Total of Inverter Ratings",
+    "UL1741SA",
+    "UL1741SB",
+    "Other attach explanation",
+    "Inverter Voltage",
+    "If Yes Estimated Maximum",
+    "Equipment Installation Contractor Indicate by owner if applicable",
+    "Name_3",
+    "Mailing Address_3",
+    "City_4",
+    "State_4",
+    "Zip Code_4",
+    "Contact Person If other than above_2",
+    "Telephone Daytime_3",
+    "Email Address_3",
+    "Name_4",
+    "Mailing Address_4",
+    "City_5",
+    "State_5",
+    "Zip Code_5",
+    "Contact Person If other than above_3",
+    "Telephone Daytime_4",
+    "Email Address_4",
+    "CustomerGenerator Signature",
+    "Date",
+    "Printed Name",
+    "Title",
+    "Email Address_5",
+    "EDC Signature",
+    "Date_2",
+    "Printed Name_2",
+    "Title_2",
+    "Name_5",
+    "Mailing Address_5",
+    "City_6",
+    "State_6",
+    "Zip Code_6",
+    "Contact Person If other than above_4",
+    "Telephone Daytime_5",
+    "Email Address_6",
+    "New_3",
+    "Revision to Open App_3",
+    "Incremental Addition to Existing Generation_2",
+    "Facility Address_2",
+    "City_7",
+    "State_7",
+    "Zip Code_7",
+    "Nearest Crossing Street_2",
+    "Account_2",
+    "Meter_2",
+    "UL1741SA_2",
+    "UL1741SB_2",
+    "Other attach explanation_2",
+    "Inverter Manufacturer_2",
+    "Model Number of Inverter_2",
+    "Number of Inverters5",
+    "Total of Inverter Ratings_2",
+    "Equipment Installation Contractor Indicate by owner if applicable_2",
+    "Name_6",
+    "Mailing Address_6",
+    "City_8",
+    "State_8",
+    "Zip Code_8",
+    "Contact Person If other than above_5",
+    "Telephone Daytime_6",
+    "Email Address_7",
+    "Signed",
+    "Date_3",
+    "Printed Name_3",
+    "Title_3",
+    "4 JCPLs default specified settings file must be installed on all UL1741SB certified inverters See JCPLs website for details",
+    "Name_7",
+    "Mailing Address_7",
+    "City_9",
+    "State_9",
+    "Zip Code_9",
+    "Contact Person If other than above_6",
+    "Telephone Daytime_7",
+    "Email Address_8",
+    "Signed_2",
+    "Date_4",
+    "Printed Name_4",
+    "Title_4",
+    "the local BuildingElectrical Code of",
+    "By",
+    "Date_5",
+    "Signed_3",
+    "Date_6",
+    "Printed Name_5",
+    "Title_5",
+    "Email Address_9",
+    "Yes",
+    "No",
+    "Successful Witness Test Date",
+    "Passed Initial",
+    "Signature",
+    "Date_7",
+    "Printed Name_6",
+    "Title_6",
+    "Dropdown3",
+    "Dropdown4",
+    "Dropdown2",
+    "Dropdown1",
+    "Dropdown6",
+    "Dropdown5",
+    "Dropdown8"
+];
 
+export const fillPdf = async (formData) => {
+    const existingPdfBytes = await fetch("/form.pdf").then(res => res.arrayBuffer());
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+    const form = pdfDoc.getForm();
 
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>*Name:</Text>
-              <Text style={styles.fieldValue}>{formData.name}</Text>
-          </View>
+    Object.entries(formData).forEach(([fieldName, value]) => {
+        try {
+            const field = form.getTextField(fieldName);
+            if (field) field.setText(value);
+        }
+        catch (e) { }
+    });
 
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>*Title:</Text>
-              <Text style={styles.fieldValue}>{formData.title}</Text>
-          </View>
-
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>*Mailing Address:</Text>
-              <Text style={styles.fieldValue}>{formData.mailingAddress}</Text>
-          </View>
-
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>Telephone (Daytime):</Text>
-              <Text style={styles.fieldValue}>{formData.phoneNumber}</Text>
-          </View>
-
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>Email Address:</Text>
-              <Text style={styles.fieldValue}>{formData.email}</Text>
-          </View>
-
-          <View style={styles.section}>
-              <Text style={styles.fieldLabel}>
-                  <Text>*City: </Text>
-                  <Text style={styles.fieldValue}>_______________________________ </Text>
-                  <Text>*State: </Text>
-                  <Text style={styles.fieldValue}>_____ </Text>
-                  <Text>*Zip Code: </Text>
-                  <Text style={styles.fieldValue}>____________</Text>
-              </Text>
-          </View>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-
-      <Page size="letter" style={styles.page}>
-      </Page>
-    </Document>
-  )
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    return blob;
 };
-
-export default InterconnectionFormPDF;

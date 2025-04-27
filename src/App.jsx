@@ -10,7 +10,7 @@ import NavBar from "./components/NavBar.jsx";
 //Fix light mode on every page & navbar
 const App = () => {
     return (
-        <div className="bg-gray-100 dark:bg-gray-900">
+        <div className="bg-gray-100 dark:bg-gray-900 mt-20">
             <Router>
                 <NavBar/>
                 <Routes>

@@ -24,8 +24,8 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="sticky top-0 bg-white dark:bg-green-700 border-b border-gray-200 dark:border-green-700 z-50 w-full">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="fixed top-0 shadow-xl bg-white dark:bg-green-700 border-b border-gray-200 dark:border-green-700 z-50 w-full h-20">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img
                         src={isDarkMode ? logoDark : logoLight}
@@ -72,7 +72,7 @@ const NavBar = () => {
                             <li key={label}>
                                 <Link
                                     to={path}
-                                    className="font-sora block py-2 px-3 text-gray-900 dark:text-white rounded-sm hover:text-green-700 dark:hover:text-black transition-all duration-300 md:hover:bg-transparent"
+                                    className="block py-2 px-3 text-gray-900 dark:text-white rounded-sm hover:text-green-700 dark:hover:text-black transition-all duration-300 md:hover:bg-transparent"
                                 >
                                     {label}
                                 </Link>
