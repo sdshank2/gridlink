@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-
+//Add emojis to cards, add some large clipart next to the first paragraph
 export default function Home() {
     return (
         <>
