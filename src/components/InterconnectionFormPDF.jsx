@@ -36,32 +36,32 @@ const InterconnectionFormPDF = ({ formData }) => {
           </Text>
 
 
-          <Text style={styles.section}>
-              <Text style={styles.fieldLabel}>*Name:{" "}</Text>
+          <View style={styles.section}>
+              <Text style={styles.fieldLabel}>*Name:</Text>
               <Text style={styles.fieldValue}>{formData.name}</Text>
-          </Text>
+          </View>
 
-          <Text style={styles.section}>
+          <View style={styles.section}>
               <Text style={styles.fieldLabel}>*Title:</Text>
               <Text style={styles.fieldValue}>{formData.title}</Text>
-          </Text>
+          </View>
 
-          <Text style={styles.section}>
+          <View style={styles.section}>
               <Text style={styles.fieldLabel}>*Mailing Address:</Text>
               <Text style={styles.fieldValue}>{formData.mailingAddress}</Text>
-          </Text>
+          </View>
 
-          <Text style={styles.section}>
+          <View style={styles.section}>
               <Text style={styles.fieldLabel}>Telephone (Daytime):</Text>
               <Text style={styles.fieldValue}>{formData.phoneNumber}</Text>
-          </Text>
+          </View>
 
-          <Text style={styles.section}>
+          <View style={styles.section}>
               <Text style={styles.fieldLabel}>Email Address:</Text>
               <Text style={styles.fieldValue}>{formData.email}</Text>
-          </Text>
+          </View>
 
-          <Text style={styles.section}>
+          <View style={styles.section}>
               <Text style={styles.fieldLabel}>
                   <Text>*City: </Text>
                   <Text style={styles.fieldValue}>_______________________________ </Text>
@@ -70,7 +70,7 @@ const InterconnectionFormPDF = ({ formData }) => {
                   <Text>*Zip Code: </Text>
                   <Text style={styles.fieldValue}>____________</Text>
               </Text>
-          </Text>
+          </View>
       </Page>
 
       <Page size="letter" style={styles.page}>

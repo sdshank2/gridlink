@@ -362,7 +362,7 @@ const ApplicationForm = () => {
 
                     <div className="md:w-1/4 md:py-2 md:mr-4">
                         <button
-                            //onClick={() => setShowModal(true)}
+                            onClick={() => setShowModal(true)}
                             className={`hidden md:block w-full py-2 rounded-md ${ enablePDFPreview ? "cursor-pointer bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700" : "bg-gray-300 dark:bg-gray-800 text-gray-800  dark:text-gray-300 cursor-not-allowed"} font-semibold`}
                         >
                             Preview Form PDF
