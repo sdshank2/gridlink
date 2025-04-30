@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
+import { ChartBarSquareIcon, CheckCircleIcon, QuestionMarkCircleIcon, CloudArrowUpIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAmericasIcon } from '@heroicons/react/24/solid';
 import { Link } from "react-router-dom";
+import {CogIcon} from "@heroicons/react/24/solid/index.js";
 //Add emojis to cards, add some large clipart next to the first paragraph
 export default function Home() {
     return (
@@ -87,18 +89,22 @@ export default function Home() {
                             {
                                 title: "Step-by-Step Guidance",
                                 desc: "Breaks the process into clear sections, from project details to diagrams, so you're never overwhelmed.",
+                                icon: <ChartBarSquareIcon className="w-6 h-6 text-green-500" />
                             },
                             {
                                 title: "Real-Time Validation",
                                 desc: "Instant feedback highlights issues as you type, helping you submit correctly the first time.",
+                                icon: <CheckCircleIcon className="w-6 h-6 text-blue-500" />
                             },
                             {
                                 title: "Contextual Help and Tooltips",
                                 desc: "Clear instructions for each field ensure you always know what’s expected.",
+                                icon: <QuestionMarkCircleIcon className="w-6 h-6 text-red-500" />
                             },
                             {
                                 title: "File Upload and Data Integrity",
                                 desc: "Secure file upload and validation for technical docs, ensuring compliance and clarity.",
+                                icon: <CloudArrowUpIcon className="w-6 h-6 text-yellow-300" />
                             },
                         ].map((item, idx) => (
                             <motion.div
@@ -106,7 +112,13 @@ export default function Home() {
                                 className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition"
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                                <div className="flex items-center space-x-2">
+                                    <div>
+
+                                    {item.icon}
+                                    </div>
+                                    <h4 className="text-xl font-semibold mt-2 mb-2">{item.title}</h4>
+                                </div>
                                 <p className="text-gray-700 dark:text-gray-300">{item.desc}</p>
                             </motion.div>
                         ))}
@@ -122,14 +134,17 @@ export default function Home() {
                             {
                                 title: "Accelerated Approval",
                                 desc: "Fewer mistakes means faster approval from utilities and regulators.",
+                                icon: <ArrowTrendingUpIcon className = "w-6 h-6 text-blue-700" />
                             },
                             {
                                 title: "Cost Efficiency",
                                 desc: "Avoiding rework and delays keeps project costs down.",
+                                icon: <CurrencyDollarIcon className = "w-6 h-6 text-yellow-500" />
                             },
                             {
                                 title: "Clean Energy Adoption",
                                 desc: "We help speed up the energy transition—starting in New Jersey.",
+                                icon: <GlobeAmericasIcon className = "w-6 h-6 text-green-500" />
                             },
                         ].map((item, idx) => (
                             <motion.div
@@ -137,7 +152,10 @@ export default function Home() {
                                 className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition"
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                                <div className="flex items-center space-x-2">
+                                    {item.icon}
+                                    <h4 className="text-xl font-semibold mb-2 mt-2">{item.title}</h4>
+                                </div>
                                 <p className="text-gray-700 dark:text-gray-300">{item.desc}</p>
                             </motion.div>
                         ))}
