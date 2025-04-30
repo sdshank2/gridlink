@@ -1,11 +1,16 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
-import { ChartBarSquareIcon, CheckCircleIcon, QuestionMarkCircleIcon, CloudArrowUpIcon, CurrencyDollarIcon, ArrowTrendingUpIcon, GlobeAmericasIcon } from '@heroicons/react/24/solid';
+import { ChartBarSquareIcon, CheckCircleIcon, QuestionMarkCircleIcon, CloudArrowUpIcon, CurrencyDollarIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/solid';
 import { Link } from "react-router-dom";
-import {CogIcon} from "@heroicons/react/24/solid/index.js";
-//Add emojis to cards, add some large clipart next to the first paragraph
+import { FaGlobeAmericas } from "react-icons/fa";
+//Add some large clipart next to the first paragraph
 export default function Home() {
+    const handleClick = () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 50);
+    }
     return (
         <>
             <div className="relative h-[calc(100vh-5rem)] bg-[url(https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover bg-bottom flex items-center justify-center">
@@ -52,17 +57,16 @@ export default function Home() {
 
             <div
                 id="next-section"
-                className="px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+                className="px-6 py-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
             >
-                <div className="max-w-5xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <div className="max-w-5xl mx-auto text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
                         Welcome to GridLink.help
                     </h2>
-                    <p className="text-xl md:text-2xl mb-6 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-                        Simplifying the Interconnection Process for Renewable Energy
-                        Projects
+                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 max-w-3xl mx-auto">
+                        Simplifying the Interconnection Process for Renewable Energy Projects
                     </p>
-                    <p className="text-lg md:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                         At GridLink.help, we know that connecting a new renewable energy
                         project to the power grid can be a long, complicated, and
                         error-prone process. The interconnection queue—the “line” where
@@ -73,51 +77,49 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-6xl mx-auto mb-20">
                     <h3 className="text-3xl md:text-4xl font-semibold text-center mb-6">
                         What We Do
                     </h3>
-                    <p className="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+                    <p className="text-xl text-center text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
                         GridLink.help is an AI-powered platform designed to streamline the
                         entire interconnection process. Our intuitive user interface guides
                         you step-by-step through complex forms, helping you avoid costly
                         mistakes.
                     </p>
 
-                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
                         {[
                             {
                                 title: "Step-by-Step Guidance",
                                 desc: "Breaks the process into clear sections, from project details to diagrams, so you're never overwhelmed.",
-                                icon: <ChartBarSquareIcon className="w-6 h-6 text-green-500" />
+                                icon: <ChartBarSquareIcon className="w-8 h-8 text-green-500" />
                             },
                             {
                                 title: "Real-Time Validation",
                                 desc: "Instant feedback highlights issues as you type, helping you submit correctly the first time.",
-                                icon: <CheckCircleIcon className="w-6 h-6 text-blue-500" />
+                                icon: <CheckCircleIcon className="w-8 h-8 text-blue-500" />
                             },
                             {
                                 title: "Contextual Help and Tooltips",
                                 desc: "Clear instructions for each field ensure you always know what’s expected.",
-                                icon: <QuestionMarkCircleIcon className="w-6 h-6 text-red-500" />
+                                icon: <QuestionMarkCircleIcon className="w-8 h-8 text-red-500" />
                             },
                             {
                                 title: "File Upload and Data Integrity",
                                 desc: "Secure file upload and validation for technical docs, ensuring compliance and clarity.",
-                                icon: <CloudArrowUpIcon className="w-6 h-6 text-yellow-300" />
+                                icon: <CloudArrowUpIcon className="w-8 h-8 text-yellow-300" />
                             },
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
-                                className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition"
-                                whileHover={{ scale: 1.05 }}
+                                className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-xl transition-all"
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ type: "tween", duration: 0.15 }}
                             >
-                                <div className="flex items-center space-x-2">
-                                    <div>
-
+                                <div className="flex items-center space-x-4 mb-3">
                                     {item.icon}
-                                    </div>
-                                    <h4 className="text-xl font-semibold mt-2 mb-2">{item.title}</h4>
+                                    <h4 className="text-xl font-semibold">{item.title}</h4>
                                 </div>
                                 <p className="text-gray-700 dark:text-gray-300">{item.desc}</p>
                             </motion.div>
@@ -125,36 +127,37 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto mt-20">
+                <div className="max-w-6xl mx-auto mb-20">
                     <h3 className="text-3xl md:text-4xl font-semibold text-center mb-8">
                         Why Choose Us
                     </h3>
-                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {[
                             {
                                 title: "Accelerated Approval",
                                 desc: "Fewer mistakes means faster approval from utilities and regulators.",
-                                icon: <ArrowTrendingUpIcon className = "w-6 h-6 text-blue-700" />
+                                icon: <ArrowTrendingUpIcon className="w-8 h-8 text-blue-700" />
                             },
                             {
                                 title: "Cost Efficiency",
                                 desc: "Avoiding rework and delays keeps project costs down.",
-                                icon: <CurrencyDollarIcon className = "w-6 h-6 text-yellow-500" />
+                                icon: <CurrencyDollarIcon className="w-8 h-8 text-yellow-500" />
                             },
                             {
                                 title: "Clean Energy Adoption",
                                 desc: "We help speed up the energy transition—starting in New Jersey.",
-                                icon: <GlobeAmericasIcon className = "w-6 h-6 text-green-500" />
+                                icon: <FaGlobeAmericas className="w-8 h-8 text-green-500" />
                             },
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
-                                className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition"
-                                whileHover={{ scale: 1.05 }}
+                                className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-xl transition-all"
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ type: "tween", duration: 0.15 }}
                             >
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-4 mb-3">
                                     {item.icon}
-                                    <h4 className="text-xl font-semibold mb-2 mt-2">{item.title}</h4>
+                                    <h4 className="text-xl font-semibold">{item.title}</h4>
                                 </div>
                                 <p className="text-gray-700 dark:text-gray-300">{item.desc}</p>
                             </motion.div>
@@ -162,14 +165,14 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="text-center mt-20">
-                    <h3 className="text-2xl font-semibold mb-6">
-                        Want to Get Started?
-                    </h3>
+                <div className="text-center mt-16">
+                    <h3 className="text-2xl font-semibold mb-6">Want to Get Started?</h3>
                     <Link to="/submitForm">
                         <motion.button
-                            className="bg-green-500 dark:bg-green-700 text-white py-4 px-6 rounded-lg text-lg shadow-md hover:bg-green-600 dark:hover:bg-green-800 transition"
+                            onClick = {handleClick}
+                            className="bg-green-500 dark:bg-green-700 text-white py-4 px-8 rounded-lg text-lg shadow-md hover:bg-green-600 dark:hover:bg-green-800 transition-colors"
                             whileHover={{ scale: 1.05 }}
+                            transition={{ type: "tween", duration: 0.1 }}
                         >
                             Start an Interconnection Queue Request
                         </motion.button>

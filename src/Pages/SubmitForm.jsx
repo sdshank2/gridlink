@@ -329,7 +329,7 @@ const ApplicationForm = () => {
                 <div
                     className={`bg-gray-200 dark:bg-gray-900 w-full md:w-1/2 p-8 pb-24 overflow-y-auto flex flex-col justify-between ${
                         activeTab !== "insights" ? "hidden md:flex" : ""
-                    } mt-4 md:mt-8`}
+                    } mt-4`}
                     ref={divRef}
                 >
                     {aiInsights ? (
