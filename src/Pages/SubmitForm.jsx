@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import ReactMarkdown from "react-markdown";
-import InterconnectionFormPDF from "../components/InterconnectionFormPDF.jsx";
+import { fillPdf } from "../components/InterconnectionFormPDF.jsx";
 import PDFPreviewer from "../components/PDFPreviewer.jsx";
 
 //LOOK INTO BUTTON FLICKERING ISSUE
 //ALSO PUT PRESETS FOR THINGS LIKE STATES (location), DATES, ETC.
-//Fix form names such as Total D C Source Rating
 const ApplicationForm = () => {
     const divRef = useRef(null);
 
     const [activeTab, setActiveTab] = useState("form");
     const [formData, setFormData] = useState({
-        name: "",
+        "Name": "",
         title: "",
         mailingAddress: "",
         mailingCity: "",
@@ -120,8 +118,8 @@ const ApplicationForm = () => {
                         className="ml-2 text-xs text-gray-500 dark:text-gray-400 cursor-help"
                         title={tooltip}
                     >
-            ⓘ
-          </span>
+                        ⓘ
+                    </span>
                 )}
             </label>
             <input
@@ -129,8 +127,7 @@ const ApplicationForm = () => {
                 name={key}
                 value={formData[key]}
                 onChange={handleInputChange}
-                className={`p-2 border rounded-md ${
-                    validationErrors[key] ? "border-red-500" : "border-gray-300"
+                className={`p-2 border rounded-md ${validationErrors[key] ? "border-red-500" : "border-gray-300"
                 } dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
             />
             {validationErrors[key] && (
@@ -145,105 +142,138 @@ const ApplicationForm = () => {
             .trim()
             .replace(/(?:^|\s)\S/g, (match) => match.toUpperCase());
 
-    let enablePDFPreview = true;
+
+    const downloadPdf = async (e) => {
+        e.target.innerText = "Generating...";
+        const blob = await fillPdf(formData);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'interconnection_form.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+        e.target.innerText = "Download PDF";
+    }
+
     return (
         <>
             <div className="md:hidden absolute w-full z-25 flex justify-around border-b dark:border-gray-700 bg-white dark:bg-gray-800">
                 <button
-                    className={`w-1/2 py-2 text-center font-semibold ${
-                        activeTab === "form" ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
+                    className={`w-1/2 py-2 text-center font-semibold ${activeTab === "form" ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
                     }`}
                     onClick={() => setActiveTab("form")}
                 >
                     Form
                 </button>
                 <button
-                    className={`w-1/2 py-2 text-center font-semibold ${
-                        activeTab === "insights" ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
+                    className={`w-1/2 py-2 text-center font-semibold ${activeTab === "insights" ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
                     }`}
                     onClick={() => setActiveTab("insights")}
                 >
                     AI Insights
                 </button>
             </div>
-            <div className="flex h-full overflow-hidden absolute md:top-12 w-full pt-4 dark:bg-gray-800">
+            <div style={{ height: "calc(100% - var(--spacing) * 30)" }} className="flex overflow-hidden absolute md:top-12 w-full dark:bg-gray-800">
                 <div
-                    className={`w-full md:w-1/2 p-8 overflow-y-auto pb-32 space-y-6 mt-4 bg-gray-50 dark:bg-gray-800 ${
-                        activeTab !== "form" ? "hidden md:block" : ""
+                    className={`w-full md:w-1/2 p-8 overflow-y-auto pb-32 space-y-6 mt-8 bg-gray-50 dark:bg-gray-800 ${activeTab !== "form" ? "hidden md:block" : ""
                     }`}
                 >
                     <form id="application-form" onSubmit={handleSubmit}>
                         {step === 0 && (
                             <div>
                                 <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">
-                                    Applicant Info
+                                    Legal Name and Mailing Address of Customer-Generator
                                 </h2>
-                                {renderInput("name")}
-                                {renderInput("title")}
-                                {renderInput("phoneNumber", "Phone Number", "Enter a phone number in the form (XXX) XXX-XXXX")}
-                                {renderInput("email", null, "Enter an email in the form example@website.com")}
+                                {renderInput("Name")}
+                                {renderInput("Mailing Address")}
+                                <div className="grid grid-cols-3 gap-4">
+                                    {renderInput("City", "City")}
+                                    {renderInput("State", "State")}
+                                    {renderInput("Zip Code")}
+                                </div>
+                                {renderInput("Telephone Daytime", "Telephone (Daytime)")}
+                                {renderInput("Email Address")}
                             </div>
                         )}
                         {step === 1 && (
                             <div>
-                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Mailing Address</h2>
-                                {renderInput("mailingAddress", "Street Address")}
-                                <div className="grid grid-cols-3 gap-4">
-                                    {renderInput("mailingCity", "City")}
-                                    {renderInput("mailingState", "State")}
-                                    {renderInput("mailingZipCode", "ZIP Code")}
+                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Alternative Contact Information</h2>
+                                {renderInput("Mailing Address", "Street Address")}
+                                <div className="grid grid-cols-2 gap-4">
+                                    {renderInput("State_2", "State")}
+                                    {renderInput("Zip Code_2", "Zip Code")}
                                 </div>
+                                {renderInput("Email Address_2", "Email Address")}
                             </div>
                         )}
 
                         {step === 2 && (
                             <div>
-                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Facility Info</h2>
-                                {renderInput("facilityAddress", "Street Address")}
+                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Facility Information</h2>
+                                {renderInput("Facility Address")}
                                 <div className="grid grid-cols-3 gap-4">
-                                    {renderInput("facilityCity", "City")}
-                                    {renderInput("facilityState", "State")}
-                                    {renderInput("facilityZipCode", "ZIP Code")}
+                                    {renderInput("City_3", "City")}
+                                    {renderInput("State_3", "State")}
+                                    {renderInput("Zip Code_3", "Zip Code")}
                                 </div>
-                                {renderInput("nearestCrossingStreet")}
+                                {renderInput("Nearest Crossing Street")}
+                                {renderInput("Account", "Account #")}
+                                <div className="grid grid-cols-3 gap-4">
+                                    {renderInput("Service Voltage 1", "Service Voltage")}
+                                    {renderInput("VAC Service Rating", "Service Rating")}
+                                    {renderInput("Service Voltage 2", "Estimated In-service Date")}
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {renderInput("Current Annual Consumption")}
+                                    {renderInput("kWh  Est Gross Annual Production", "Est. Gross Annual Production")}
+                                </div>
+                                {renderInput("Total DC Source Rating")}
+                                <div className="grid grid-cols-2 gap-4">
+                                    {renderInput("Inverter Manufacturer")}
+                                    {renderInput("Model Number of Inverter")}
+                                </div>
+                                <div className="grid grid-cols-3 gap-4">
+                                    {renderInput("Number of Phases")}
+                                    {renderInput("Number of Inverters1", "Number of Inverters")}
+                                    {renderInput("Total of Inverter Ratings")}
+                                </div>
+                                {renderInput("Inverter Voltage")}
                             </div>
                         )}
 
                         {step === 3 && (
                             <div>
-                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Electrical Info</h2>
-                                {renderInput("accountNumber")}
-                                {renderInput("meterNumber")}
-                                {renderInput("serviceVoltage")}
-                                {renderInput("serviceRating")}
-                                {renderInput("estimatedInServiceDate")}
-                                {renderInput("currentAnnualConsumption")}
-                                {renderInput("estimatedGrossAnnualProduction", null, "kWh/year production")}
+                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Equipment Installation Contractor</h2>
+                                {renderInput("Name_3", "Name")}
+                                {renderInput("Mailing Address_3", "Mailing Address")}
+                                <div className="grid grid-cols-3 gap-4">
+                                    {renderInput("City_4", "City")}
+                                    {renderInput("State_4", "State")}
+                                    {renderInput("Zip Code_4", "Zip Code")}
+                                </div>
+                                {renderInput("Telephone Daytime_3", "Telephone (Daytime)")}
+                                {renderInput("Email Address_3", "Email Address")}
                             </div>
                         )}
 
                         {step === 4 && (
                             <div>
-                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Inverter Details</h2>
-                                {renderInput("energySource")}
-                                {renderInput("totalDCSourceRating", "Total D/C Source Rating")}
-                                {renderInput("inverterManufacturer")}
-                                {renderInput("inverterModelNumber")}
-                                {renderInput("numberOfPhases")}
-                                {renderInput("numberOfInverters")}
-                                {renderInput("totalInverterRatings")}
-                                {renderInput("inverterCertifications")}
-                                {renderInput("inverterVoltage")}
+                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Electrical Contractor</h2>
+                                {renderInput("Name_4", "Name")}
+                                {renderInput("Mailing Address_4", "Mailing Address")}
+                                <div className="grid grid-cols-3 gap-4">
+                                    {renderInput("City_5", "City")}
+                                    {renderInput("State_5", "State")}
+                                    {renderInput("Zip Code_5", "Zip Code")}
+                                </div>
+                                {renderInput("Telephone Daytime_4", "Telephone (Daytime)")}
+                                {renderInput("Email Address_4", "Email Address")}
                             </div>
                         )}
 
                         {step === 5 && (
                             <div>
                                 <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Attachments</h2>
-                                {renderInput("accessibleDisconnect")}
-                                {renderInput("exportPower")}
-                                {renderInput("maxExportPower")}
-                                {renderInput("applicationFeeEnclosed")}
 
                                 <div className="flex flex-col space-y-1">
                                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -296,10 +326,11 @@ const ApplicationForm = () => {
 
                         {step === 6 && (
                             <div>
-                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Contractor & Signature</h2>
-                                {renderInput("equipmentInstallationContractor")}
-                                {renderInput("electricalContractor")}
-                                {renderInput("signatureDate")}
+                                <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">Customer-Generator Signature</h2>
+                                {renderInput("Date")}
+                                {renderInput("Printed Name")}
+                                {renderInput("Title")}
+                                {renderInput("Email Address_5", "Email Address")}
                             </div>
                         )}
 
@@ -327,9 +358,8 @@ const ApplicationForm = () => {
                 </div>
 
                 <div
-                    className={`bg-gray-200 dark:bg-gray-900 w-full md:w-1/2 p-8 pb-24 overflow-y-auto flex flex-col justify-between ${
-                        activeTab !== "insights" ? "hidden md:flex" : ""
-                    } mt-4`}
+                    className={`bg-gray-200 dark:bg-gray-900 w-full md:w-1/2 p-8 pb-24 overflow-y-auto flex flex-col justify-between ${activeTab !== "insights" ? "hidden md:flex" : ""
+                    } mt-4 md:mt-8`}
                     ref={divRef}
                 >
                     {aiInsights ? (
@@ -346,66 +376,58 @@ const ApplicationForm = () => {
                     )}
                 </div>
             </div>
-                <div className="md:flex w-full px-4 py-2 h-18 fixed bottom-0 left-0 bg-white dark:bg-gray-900 shadow z-40">
-                    <div className={`w-full md:w-1/4 py-2 md:mr-4 ${activeTab === "form" ? "block" : "hidden"} md:block`}>
-                        <PDFDownloadLink
-                            document={<InterconnectionFormPDF formData={formData} />}
-                            fileName="interconnection_form.pdf"
-                        >
-                            {({ loading }) => (
-                                <button className="w-full py-2 rounded-md cursor-pointer bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700 font-semibold">
-                                    {loading ? "Generating PDF..." : "Download Filled Form as PDF"}
-                                </button>
-                            )}
-                        </PDFDownloadLink>
-                    </div>
-
-                    <div className="md:w-1/4 md:py-2 md:mr-4">
-                        <button
-                            onClick={() => setShowModal(true)}
-                            className={`hidden md:block w-full py-2 rounded-md ${ enablePDFPreview ? "cursor-pointer bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700" : "bg-gray-300 dark:bg-gray-800 text-gray-800  dark:text-gray-300 cursor-not-allowed"} font-semibold`}
-                        >
-                            Preview Form PDF
-                        </button>
-                    </div>
-
-                    <div className={`w-full md:w-1/2 py-2 ${activeTab === "insights" ? "block" : "hidden"} md:block`}>
-                        <button
-                            type="submit"
-                            form="application-form"
-                            disabled={loadingInsights}
-                            className={`w-full py-2 mx-auto rounded-md font-semibold cursor-pointer ${
-                                loadingInsights
-                                    ? "bg-gray-300 text-gray-600 dark:bg-gray-600 dark:text-gray-400 cursor-not-allowed"
-                                    : "bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800"
-                            }`}
-                        >
-                            {loadingInsights ? "Generating AI Insights..." : "Generate AI Insights"}
-                        </button>
-                    </div>
+            <div className="md:flex w-full px-4 py-2 h-18 fixed bottom-0 left-0 bg-white dark:bg-gray-900 shadow z-40">
+                <div className={`w-full md:w-1/4 py-2 md:mr-4 ${activeTab === "form" ? "block" : "hidden"} md:block`}>
+                    <button
+                        onClick={downloadPdf}
+                        className="w-full py-2 rounded-md cursor-pointer bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700 font-semibold">Download PDF</button>
                 </div>
-                {showModal && (
-                    <div className="hidden md:block">
-                        <div className="fixed inset-0 bg-black opacity-50 z-70" />
 
-                        <div className="fixed top-5 left-0 right-0 bottom-5 z-80 flex items-center justify-center">
-                            <div className="bg-white dark:bg-gray-700 p-6 rounded-md max-w-3xl w-full h-98% overflow-auto opacity-100">
-                                <div className="flex items-center justify-between">
-                                    <h2 className="text-xl text-black dark:text-white font-semibold">📄 PDF Preview</h2>
-                                    <button
-                                        onClick={() => setShowModal(false)}
-                                        className="px-4 py-2 text-black dark:text-white cursor-pointer rounded-full text-xl flex items-center justify-center"
-                                    >
-                                        &#10005;
-                                    </button>
-                                </div>
-                                <div className="w-full overflow-auto">
+                <div className="md:w-1/4 md:py-2 md:mr-4">
+                    <button
+                        onClick={() => setShowModal(true)}
+                        className="hidden md:block w-full py-2 rounded-md cursor-pointer bg-green-500 hover:bg-green-600 text-white dark:bg-green-600 dark:hover:bg-green-700 font-semibold"
+                    >
+                        Preview Form PDF
+                    </button>
+                </div>
+
+                <div className={`w-full md:w-1/2 py-2 ${activeTab === "insights" ? "block" : "hidden"} md:block`}>
+                    <button
+                        type="submit"
+                        form="application-form"
+                        disabled={loadingInsights}
+                        className={`w-full py-2 rounded-md font-semibold cursor-pointer ${loadingInsights
+                            ? "bg-gray-300 text-gray-600 dark:bg-gray-600 dark:text-gray-400 cursor-not-allowed"
+                            : "bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800"
+                        }`}
+                    >
+                        {loadingInsights ? "Generating AI Insights..." : "Generate AI Insights"}
+                    </button>
+                </div>
+            </div>
+            {showModal && (
+                <div className="hidden md:block ">
+                    <div className="fixed inset-0 bg-black opacity-50 z-70 " />
+
+                    <div className="fixed top-5 left-0 right-0 bottom-5 z-80 flex items-center justify-center">
+                        <div className="flex flex-col bg-white dark:bg-gray-700 p-6 rounded-md max-w-3xl w-full h-full overflow-hidden opacity-100">
+                            <div className="flex items-center justify-between">
+                                <h2 className="text-xl text-black dark:text-white font-semibold">📄 PDF Preview</h2>
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="px-4 py-2 text-black dark:text-white cursor-pointer rounded-full text-xl flex items-center justify-center"
+                                >
+                                    &#10005;
+                                </button>
+                            </div>
+                            <div className="w-full h-full pb-5 overflow-hidden">
                                 <PDFPreviewer formData={formData} />
-                                </div>
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
         </>
     );
 };
