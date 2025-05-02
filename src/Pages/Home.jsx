@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
-import { ChartBarSquareIcon, CheckCircleIcon, QuestionMarkCircleIcon, CloudArrowUpIcon, CurrencyDollarIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/solid';
+import { ChartBarSquareIcon, CheckCircleIcon, QuestionMarkCircleIcon, CloudArrowUpIcon, CurrencyDollarIcon, ClockIcon } from '@heroicons/react/24/solid';
 import { Link } from "react-router-dom";
 import { FaGlobeAmericas } from "react-icons/fa";
 //Add some large clipart next to the first paragraph
@@ -136,7 +136,7 @@ export default function Home() {
                             {
                                 title: "Accelerated Approval",
                                 desc: "Fewer mistakes means faster approval from utilities and regulators.",
-                                icon: <ArrowTrendingUpIcon className="w-8 h-8 text-blue-700" />
+                                icon: <ClockIcon className="w-8 h-8 text-blue-700" />
                             },
                             {
                                 title: "Cost Efficiency",
