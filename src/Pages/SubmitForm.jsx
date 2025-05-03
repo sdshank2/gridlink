@@ -3,8 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { fillPdf } from "../components/InterconnectionFormPDF.jsx";
 import PDFPreviewer from "../components/PDFPreviewer.jsx";
 
-//LOOK INTO BUTTON FLICKERING ISSUE
-//ALSO PUT PRESETS FOR THINGS LIKE STATES (location), DATES, ETC.
+//ADD PRESETS FOR THINGS LIKE STATES (location), DATES, ETC.
 const ApplicationForm = () => {
     const divRef = useRef(null);
 

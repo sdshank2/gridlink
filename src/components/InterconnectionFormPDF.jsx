@@ -1,7 +1,7 @@
 import React from "react";
 import { Font, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PDFDocument } from 'pdf-lib';
-//Copy this pdf: https://www.firstenergycorp.com/content/dam/feconnect/files/retail/nj/NJ-Level-1-Interconnection-Application-Agreement.pdf
+
 Font.register({
     family: 'Arial',
     src: "../assets/arial-font/arial.ttf"

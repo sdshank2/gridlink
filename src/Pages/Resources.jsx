@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import { AcademicCapIcon, DocumentTextIcon, MapIcon, CogIcon } from '@heroicons/react/24/solid';
 
-// REWRITE THIS PAGE INTO A SOURCES PAGE
 const cardClass = "p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-2xl transition";
 const headerClass = "text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 flex items-center space-x-2";
 const descClass = "text-gray-700 dark:text-gray-300 mb-2";
